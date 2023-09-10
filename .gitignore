@@ -1,0 +1,54 @@
+HELP.md
+/store/target/
+
+### STS ###
+/store/.apt_generated
+/store/.classpath
+/store/.factorypath
+/store/.project
+/store/.settings
+/store/.springBeans
+/store/.sts4-cache
+
+### IntelliJ IDEA ###
+/store/.idea
+/store/*.iws
+/store/*.iml
+/store/*.ipr
+
+### NetBeans ###
+/store/nbproject/private/
+/store/nbbuild/
+/store/dist/
+/store/nbdist/
+/store/.nb-gradle/
+/store/build/
+/store/!**/src/main/**/build/
+/store/!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/store-front-end/node_modules
+/store-front-end/.pnp
+/store-front-end/.pnp.js
+
+# testing
+/store-front-end/coverage
+
+# production
+/store-front-end/build
+
+# misc
+/store-front-end/.DS_Store
+/store-front-end/.env.local
+/store-front-end/.env.development.local
+/store-front-end/.env.test.local
+/store-front-end/.env.production.local
+
+/store-front-end/npm-debug.log*
+/store-front-end/yarn-debug.log*
+/store-front-end/yarn-error.log*

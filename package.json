@@ -1,0 +1,16 @@
+{
+  "name": "store-react-java",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "front-install": "cd store-front-end && npm install",
+    "front-start": "cd store-front-end && npm start",
+    "front-build": "cd store-front-end && npm run build",
+    "front-deploy": "cd store-front-end && npm run deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
