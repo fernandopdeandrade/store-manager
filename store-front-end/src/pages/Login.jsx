@@ -11,7 +11,7 @@ function Login() {
   const { role } = useContext(FilterContextState) || {};
   console.log("Sou o role do login= ", role);
 
-  const { loginUser, errorLogin, setErrorLogin } =
+  const { loginUser, getAllClients,  errorLogin, setErrorLogin } =
     useDataInfos() || {};
 
   const [username, setuserName] = useState("");
@@ -24,7 +24,8 @@ function Login() {
   const passwordValidation = password.length > PASSWORD_LIMIT;
 
   const saveSubmition = () => {
-   loginUser(username, password);
+    //  loginUser(username, password);
+    getAllClients()
   };
 
   useEffect(() => {

@@ -14,6 +14,11 @@ public record RequestCliente(
   @NotBlank
   String birth_date,
 
-  String id_product
+  String id_product,
+  
+  @NotBlank
+  String password,
+  @NotBlank
+  String role
 ) {  
 }

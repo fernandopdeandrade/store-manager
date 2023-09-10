@@ -27,6 +27,8 @@ public class Client {
   private String birth_date;
   private String id_product;
   private Boolean active;
+  private String password;
+  private String role;
   
   public Client(RequestCliente requestCliente) {
     this.name = requestCliente.name();
@@ -35,5 +37,7 @@ public class Client {
     this.birth_date = requestCliente.birth_date();
     this.id_product = requestCliente.id_product();
     this.active = true;
+    this.password = requestCliente.password();
+    this.role = requestCliente.role();
   }
 }
