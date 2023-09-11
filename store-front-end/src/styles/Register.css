@@ -29,17 +29,34 @@
 }
 
 .formRegister h1 {
-  color: white;
+  color: gray;
   font-size: 2em;
   font-weight: 700;
   margin-top: 10px;
   text-shadow: 1px 1px 15px white;
 }
 
-.login-form b {
-  color: white;
-  font-size: 15px;
+.info-inputs-complete {
   margin-bottom: 10px;
+  width: 100%;
+  text-align: left;
+  margin-left: 40px;
+}
+
+.login-form .b-error {
+  color: red;
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: 300;
+  text-shadow: 1px 1px 1px black;
+}
+
+.login-form .b-succes {
+  color: green;
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: 300;
+  text-shadow: 1px 1px 1px black;
 }
 
 .formRegister input {
@@ -130,8 +147,8 @@
   text-shadow: 1px 1px 1px white;
 }
 
-.login-form .span-message {
-  color: rgb(255, 251, 3);
+.login-form .span-message-register {
+  color: #41197f;
   font-size: 1em;
   font-weight: 700;
   margin-top: -90px;
@@ -154,7 +171,7 @@
   }
 
   .login-form b {
-    color: white;
+    color: red;
     font-size: 12px;
     margin-bottom: 10px;
   }
@@ -176,7 +193,7 @@
   }
 
   .login-form b {
-    color: white;
+    color: red;
     font-size: 10px;
     margin-bottom: 10px;
   }

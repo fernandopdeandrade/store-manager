@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-// import Loading from "../components/Loading";
+import Loading from "../components/Loading";
 import { FilterContextState } from "../context/InfoContext";
 import useDataInfos from "../hooks/useDataInfos";
 import "../styles/Login.css";
@@ -8,10 +8,7 @@ import "../styles/Login.css";
 function Login() {
   const history = useHistory();
 
-  const { role, token, successRegister } = useContext(FilterContextState) || {};
-  console.log("Sou o role do login= ", role);
-  console.log("Sou o token do login= ", token);
-  console.log("Sou o successRegister do login= ", successRegister);
+  const { role } = useContext(FilterContextState) || {};
 
   const { loginUser, errorLogin, setErrorLogin } =
     useDataInfos() || {};
@@ -19,6 +16,7 @@ function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
   const [messageLogin, setMessageLogin] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const EMAIL_LIMIT = 5;
   const userNameValidation = email.length > EMAIL_LIMIT; 
@@ -26,11 +24,14 @@ function Login() {
   const passwordValidation = password.length > PASSWORD_LIMIT;
 
   const saveSubmition = () => {
-     loginUser(email, password);
-
+    loginUser(email, password);
   };
 
   useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
     if (errorLogin === "Email ou senha inválidos") {
       setErrorLogin("Usuário não encontrado no banco de dados");
 
@@ -40,14 +41,16 @@ function Login() {
     }
 
     if (role === "ADMIN") {
-      history.push("/home");
+      history.push("/home_admin");
+    } else if (role === "USER") {
+      history.push("/home_user");
     }
     if (role === "") {
       setMessageLogin("Preencha todos os campos!");
     }
   }, [role, history, errorLogin, setErrorLogin, setMessageLogin]);
 
-  // if (isLoading) return <Loading />;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="login-form">

@@ -31,12 +31,10 @@ public class ClientController {
   @PostMapping
   public ResponseEntity<Client> registerClient(@RequestBody @Valid RequestCliente data) {
     boolean clientExists = false;
-    var allClients = repository.findAll();
+    List<Client> optionalClient = repository.findByCpf(data.cpf());
 
-    for (Client client : allClients) {
-      if (client.getName() == data.name() && client.getCpf().equals(data.cpf())) {
-        clientExists = true;
-      }
+    if (!optionalClient.isEmpty()) {
+      clientExists = true;
     }
 
     if (clientExists) {

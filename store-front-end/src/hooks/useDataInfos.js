@@ -1,11 +1,13 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FilterContextState } from '../context/InfoContext';
 import { fetchCreateUser, fetchGetAllClients, fetchGetAllProducts, fetchLoginUser } from '../services/fetchData';
 
 export default function useDataInfos() {
   const { setToken, setUser, setRole, setSuccessRegister } = useContext(FilterContextState);
-  const [isLoading, setIsLoading] = useState(true);
   const [errorLogin, setErrorLogin] = useState('');
+  const [responseRegister, setResponseRegister] = useState('');
+
+  useEffect(() => {}, [responseRegister])
 
   const loginUser = async (email, password) => {
     const url = 'http://localhost:8080/client/auth/login';
@@ -35,6 +37,7 @@ export default function useDataInfos() {
 
     const createUser = async (url, options) => {
     const resultData = await fetchCreateUser(url, options);
+    setResponseRegister(resultData);
     console.log("sou o resultData do useDataInfos", resultData);
     };
   
@@ -51,12 +54,13 @@ export default function useDataInfos() {
   };
   
   return {
-    isLoading,
     errorLogin,
     setErrorLogin,
     loginUser,
     getAllClients,
     getAllProducts,
-    createUser
+    createUser,
+    responseRegister,
+    setResponseRegister,
   };
 }
