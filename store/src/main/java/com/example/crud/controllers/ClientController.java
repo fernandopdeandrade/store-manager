@@ -28,31 +28,10 @@ public class ClientController {
   @Autowired
   private ClientRepository repository;
 
-  @GetMapping
-  public ResponseEntity<List<Client>> getAllClients() {
-    try {
-      var allClients = repository.findAllByActiveTrue();
-      return ResponseEntity.ok(allClients);
-    } catch (Exception e) {
-      return ResponseEntity.badRequest().build();
-    }
-  }
-
-  @GetMapping("/{id}")
-  public ResponseEntity<Client> getClientById(@PathVariable String id) {
-      Optional<Client> optionalClient = repository.findById(id);
-      if (optionalClient.isPresent()) {
-          Client client = optionalClient.get();
-          return ResponseEntity.ok(client);
-      } else {
-          throw new EntityNotFoundException();
-      }
-    }
-
   @PostMapping
   public ResponseEntity<Client> registerClient(@RequestBody @Valid RequestCliente data) {
     boolean clientExists = false;
-    var allClients = repository.findAllByActiveTrue();
+    var allClients = repository.findAll();
 
     for (Client client : allClients) {
       if (client.getName() == data.name() && client.getCpf().equals(data.cpf())) {
@@ -68,7 +47,43 @@ public class ClientController {
       return ResponseEntity.ok(newClient);
     }
   }
-    
+  
+  @PostMapping("/auth/login")
+  public ResponseEntity<Client> loginClient(@RequestBody @Valid RequestCliente data) {
+    List<Client> optionalClient = repository.findByEmail(data.email());
+    if (optionalClient.isEmpty()) {
+      throw new EntityNotFoundException();
+    } else {
+      Client client = optionalClient.get(0);
+      if (client.getPassword().equals(data.password())) {
+        return ResponseEntity.ok(client);
+      } else {
+        throw new EntityNotFoundException();
+      }
+    }
+  }
+  
+  @GetMapping
+  public ResponseEntity<List<Client>> getAllClients() {
+    try {
+      var allClients = repository.findAllByActiveTrue();
+      return ResponseEntity.ok(allClients);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().build();
+    }
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<Client> getClientById(@PathVariable String id) {
+    Optional<Client> optionalClient = repository.findById(id);
+    if (optionalClient.isPresent()) {
+      Client client = optionalClient.get();
+      return ResponseEntity.ok(client);
+    } else {
+      throw new EntityNotFoundException();
+    }
+  }
+  
   @PutMapping
   @Transactional
   public ResponseEntity<Client> updateClient(@RequestBody @Valid RequestCliente data) {

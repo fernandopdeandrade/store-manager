@@ -3,14 +3,14 @@ import { FilterContextState } from '../context/InfoContext';
 import { fetchCreateUser, fetchGetAllClients, fetchGetAllProducts, fetchLoginUser } from '../services/fetchData';
 
 export default function useDataInfos() {
-  const { setToken, setUser } = useContext(FilterContextState);
+  const { setToken, setUser, setRole, setSuccessRegister } = useContext(FilterContextState);
   const [isLoading, setIsLoading] = useState(true);
   const [errorLogin, setErrorLogin] = useState('');
 
-  const loginUser = async (username, password) => {
+  const loginUser = async (email, password) => {
     const url = 'http://localhost:8080/client/auth/login';
     const body = {
-      username,
+      email,
       password,
     };
     const Option = {
@@ -22,14 +22,19 @@ export default function useDataInfos() {
     };
 
     const resultData = await fetchLoginUser(url, Option);
-    console.log("sou o resultData do useDataInfos", resultData);
+
+    if (resultData.password === password) {
+      setUser(resultData);
+      setToken("access-token");
+      setRole(resultData.role);
+      setSuccessRegister('Login efetuado com sucesso');
+    } else {
+      setErrorLogin('Email ou senha inválidos');
+    }
   };
 
-  const createUser = async (data) => {
-      
-    const url = 'http://localhost:8080/client';
-    const resultData = await fetchCreateUser(url, Option);
-      
+    const createUser = async (url, options) => {
+    const resultData = await fetchCreateUser(url, options);
     console.log("sou o resultData do useDataInfos", resultData);
     };
   

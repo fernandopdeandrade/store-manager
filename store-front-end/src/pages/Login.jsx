@@ -8,36 +8,30 @@ import "../styles/Login.css";
 function Login() {
   const history = useHistory();
 
-  const { role } = useContext(FilterContextState) || {};
+  const { role, token, successRegister } = useContext(FilterContextState) || {};
   console.log("Sou o role do login= ", role);
+  console.log("Sou o token do login= ", token);
+  console.log("Sou o successRegister do login= ", successRegister);
 
-  const { loginUser, getAllClients,  errorLogin, setErrorLogin } =
+  const { loginUser, errorLogin, setErrorLogin } =
     useDataInfos() || {};
 
-  const [username, setuserName] = useState("");
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
   const [messageLogin, setMessageLogin] = useState("");
 
-  const USER_NAME_LIMIT = 5;
-  const userNameValidation = username.length > USER_NAME_LIMIT; 
+  const EMAIL_LIMIT = 5;
+  const userNameValidation = email.length > EMAIL_LIMIT; 
   const PASSWORD_LIMIT = 5;
   const passwordValidation = password.length > PASSWORD_LIMIT;
 
   const saveSubmition = () => {
-    //  loginUser(username, password);
-    getAllClients()
+     loginUser(email, password);
+
   };
 
   useEffect(() => {
-    if (errorLogin === "Invalid email or password") {
-      setErrorLogin("Email ou senha inválidos");
-
-      setTimeout(() => {
-        setErrorLogin("");
-      }, 3000);
-    }
-
-    if (errorLogin === "Invalid email or password 1") {
+    if (errorLogin === "Email ou senha inválidos") {
       setErrorLogin("Usuário não encontrado no banco de dados");
 
       setTimeout(() => {
@@ -45,7 +39,7 @@ function Login() {
       }, 3000);
     }
 
-    if (role === "admin" || role === "user") {
+    if (role === "ADMIN") {
       history.push("/home");
     }
     if (role === "") {
@@ -62,10 +56,10 @@ function Login() {
       <div className="formLogin">
         <h1>Login</h1>
         <input
-          type="text"
-          data-testid="userName-input"
-          placeholder="Nome..."
-          onChange={(event) => setuserName(event.target.value)}
+          type="email"
+          data-testid="email-input"
+          placeholder="Email..."
+          onChange={(event) => setEmail(event.target.value)}
         />
         <input
           type="password"

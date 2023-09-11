@@ -9,34 +9,13 @@ function FilterProvider({ children }) {
     const [role, setRole] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [errorRegister, setErrorRegister] = useState('');
+    const [successRegister, setSuccessRegister] = useState('');
 
     useEffect(() => {
-        try {
-            if (token !== '' && token !== undefined) {
-                const registerUser = (token) => {
-                console.log("entrei no if do infoContext", typeof token)
-                // const url = 'http://localhost:8080/auth/login';
-                //     const options = {
-                //         method: 'POST',
-                //         headers: { 'Content-Type': 'application/json', authorization: token },
-                //     };
-
-                //     fetchDataRegisterUser(url, options)
-                //         .then((response) => {
-                //             setRole(response.role);
-                //             setErrorRegister(response.message);
-                //             localStorage.setItem('role', JSON.stringify(response.role));
-                //         })
-                //         .catch((err) => setErrorRegister(err.message))
-                //         .finally(() => setIsLoading(false));
-                 };
-                registerUser(token);
-            }
-        } catch (error) {
-            setErrorRegister(error.message);
-        }
-    }, [token]);
-
+            if (token === 'access-token') {
+                localStorage.setItem('user', JSON.stringify(user));
+            } 
+    }, [token, user]);
 
     const value = useMemo(() => ({
         user,
@@ -49,7 +28,9 @@ function FilterProvider({ children }) {
         setIsLoading,
         errorRegister,
         setErrorRegister,
-    }), [user, token, role, isLoading, errorRegister]);
+        successRegister,
+        setSuccessRegister,
+    }), [user, token, role, isLoading, errorRegister, successRegister]);
     return (
         <FilterContextState.Provider value={value}>
             {children}
