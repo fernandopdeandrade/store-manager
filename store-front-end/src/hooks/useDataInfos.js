@@ -3,7 +3,7 @@ import { FilterContextState } from '../context/InfoContext';
 import { fetchCreateUser, fetchGetAllClients, fetchGetAllProducts, fetchLoginUser } from '../services/fetchData';
 
 export default function useDataInfos() {
-  const { setToken, setUser, setRole, setSuccessRegister } = useContext(FilterContextState);
+  const { setUser } = useContext(FilterContextState);
   const [errorLogin, setErrorLogin] = useState('');
   const [responseRegister, setResponseRegister] = useState('');
 
@@ -24,12 +24,10 @@ export default function useDataInfos() {
     };
 
     const resultData = await fetchLoginUser(url, Option);
+    console.log("sou o resultData do useDataInfos", resultData);
 
     if (resultData.password === password) {
       setUser(resultData);
-      setToken("access-token");
-      setRole(resultData.role);
-      setSuccessRegister('Login efetuado com sucesso');
     } else {
       setErrorLogin('Email ou senha inválidos');
     }

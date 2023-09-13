@@ -6,14 +6,8 @@
   width: 100%;
 }
 
-.recipes_logo {
+.logo-store {
   height: 120px;
-  margin-bottom: -20px;
-  margin-top: 20px;
-}
-
-.login_image {
-  height: 200px;
 }
 
 .formRegister {
@@ -25,7 +19,6 @@
   justify-content: center;
   margin-bottom: 150px;
   width: 500px;
-  padding: 20px;
 }
 
 .formRegister h1 {
@@ -36,34 +29,26 @@
   text-shadow: 1px 1px 15px white;
 }
 
-.info-inputs-complete {
-  margin-bottom: 10px;
-  width: 100%;
-  text-align: left;
-  margin-left: 40px;
-}
-
-.login-form .b-error {
+.login-form .b-error-register {
   color: red;
   font-size: 13px;
-  margin-bottom: 10px;
-  font-weight: 300;
-  text-shadow: 1px 1px 1px black;
+  margin-top: 10px;
+  margin-bottom: -15px;
+  font-weight: 100;
 }
 
-.login-form .b-succes {
+.login-form .b-succes-register {
   color: green;
   font-size: 13px;
-  margin-bottom: 10px;
-  font-weight: 300;
-  text-shadow: 1px 1px 1px black;
+  margin-top: 10px;
+  margin-bottom: -15px;
+  font-weight: 100;
 }
 
 .formRegister input {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 15px;
-  margin-bottom: 10px;
   outline: none;
   padding: 5px;
   width: 90%;
@@ -73,85 +58,71 @@
   background-color: #e0ddd4;
 }
 
-.formRegister button {
-  background: white;
+.formRegister .login_button {
+  background: green;
   border: none;
   border-radius: 4px;
-  color: #41197f;
   cursor: pointer;
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 10px;
-  margin-top: 5px;
-  outline: none;
-  padding: 10px;
-  transition: all ease-in-out 0.3s;
-  width: 150px;
-}
-
-.formRegister button:hover {
-  background: white;
-  color: #41197f;
-  scale: 1.1;
-}
-
-.formRegister button:active {
-  box-shadow: 5px 5px 5px 5px black;
-  color: black;
-  scale: 0.9;
-}
-
-.login_button {
   margin-top: 25px;
+  padding: 10px;
+  width: 150px;
+  color: white;
 }
 
-.formRegister button:disabled {
+.formRegister .login_button:hover {
+  background: green;
+}
+
+.formRegister .login_button:active {
+  box-shadow: 3px 3px 5px black;
+  scale: 0.95;
+}
+
+.formRegister .login_button:disabled {
   background: white;
   box-shadow: red 0 0 10px;
   color: rgb(255, 2, 2);
   cursor: not-allowed;
 }
 
-.formRegister a {
+.formRegister .link-register {
   color: #41197f;
   font-size: 1em;
   font-weight: 700;
   margin-top: 10px;
-  text-decoration: none;
   text-shadow: 2px 1px 1px white;
 }
 
-.formRegister a:hover {
-  color: #41197f;
+.formRegister .link-register:hover {
+  color: #6600ff;
   text-decoration: underline;
   scale: 1.02;
-}
-
-.link {
-  margin-bottom: 20px;
 }
 
 .login-form .error {
   color: rgb(255, 3, 45);
   font-size: 1em;
-  font-weight: 700;
-  margin-top: -90px;
+  font-weight: 100;
+  margin-top: -120px;
   text-shadow: 1px 1px 1px white;
 }
 
 .login-form .success {
-  color: rgb(3, 255, 3);
+  color: green;
   font-size: 1em;
-  font-weight: 700;
-  margin-top: -90px;
+  font-weight: 100;
+  margin-top: -120px;
   text-shadow: 1px 1px 1px white;
 }
 
 .login-form .span-message-register {
-  color: #41197f;
+  color: #010a53;
   font-size: 1em;
-  font-weight: 700;
-  margin-top: -90px;
+  font-weight: 100;
+  margin-top: -120px;
   text-shadow: 1px 1px 1px white;
 }
 

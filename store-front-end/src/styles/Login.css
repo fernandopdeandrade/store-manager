@@ -2,19 +2,14 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: center;
   width: 100%;
-}
-
-.recipes_logo {
-  height: 120px;
-  margin-bottom: -20px;
-  margin-top: 20px;
+  margin-top: 80px;
 }
 
 .login_image {
-  height: 200px;
+  height: 150px;
+  width: 150px;
 }
 
 .formLogin {
@@ -30,11 +25,12 @@
 }
 
 .formLogin h1 {
-  color: white;
+  color: gray;
   font-size: 2em;
   font-weight: 700;
   margin-top: 10px;
-  text-shadow: 1px 1px 15px white;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 1px black;
 }
 
 .formLogin input {
@@ -50,57 +46,46 @@
 .formLogin input:hover {
   background-color: #e0ddd4;
 }
-
-.formLogin button {
-  background: white;
+.formLogin .login_button {
+  background: green;
   border: none;
   border-radius: 4px;
-  color: #41197f;
   cursor: pointer;
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 10px;
-  margin-top: 5px;
-  outline: none;
-  padding: 10px;
-  transition: all ease-in-out 0.3s;
-  width: 150px;
-}
-
-.formLogin button:hover {
-  background: white;
-  color: #41197f;
-  scale: 1.1;
-}
-
-.formLogin button:active {
-  box-shadow: 5px 5px 5px 5px black;
-  color: black;
-  scale: 0.9;
-}
-
-.login_button {
   margin-top: 25px;
+  padding: 10px;
+  width: 150px;
+  color: white;
 }
 
-.formLogin button:disabled {
+.formLogin .login_button:hover {
+  background: rgb(7, 165, 7);
+}
+
+.formLogin .login_button:active {
+  box-shadow: 3px 3px 5px black;
+  scale: 0.95;
+}
+
+.formLogin .login_button:disabled {
   background: white;
   box-shadow: red 0 0 10px;
   color: rgb(255, 2, 2);
   cursor: not-allowed;
 }
 
-.formLogin a {
+.formLogin .link {
   color: #41197f;
   font-size: 1em;
   font-weight: 700;
   margin-top: 10px;
-  text-decoration: none;
   text-shadow: 2px 1px 1px white;
 }
 
-.formLogin a:hover {
-  color: #41197f;
+.formLogin .link:hover {
+  color: #6600ff;
   text-decoration: underline;
   scale: 1.02;
 }
@@ -108,15 +93,15 @@
 .login-form .span-error-login {
   color: rgb(255, 3, 45);
   font-size: 1em;
-  font-weight: 700;
+  font-weight: 100;
   margin-top: -80px;
   text-shadow: 1px 1px 1px white;
 }
 
 .login-form .span-message {
-  color: rgb(255, 251, 3);
+  color: #010a53;
   font-size: 1em;
-  font-weight: 700;
+  font-weight: 100;
   margin-top: -80px;
   text-shadow: 1px 1px 1px white;
 }

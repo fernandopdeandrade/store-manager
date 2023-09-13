@@ -4,33 +4,19 @@ import { createContext, useEffect, useMemo, useState } from 'react';
 const FilterContextState = createContext();
 
 function FilterProvider({ children }) {
-    const [user, setUser] = useState({});
-    const [token, setToken] = useState('');
-    const [role, setRole] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
-    const [errorRegister, setErrorRegister] = useState('');
-    const [successRegister, setSuccessRegister] = useState('');
+    const [user, setUser] = useState(localStorage.getItem('user') || []);
 
     useEffect(() => {
-            if (token === 'access-token') {
+            if (user.length !== 0) {
                 localStorage.setItem('user', JSON.stringify(user));
             } 
-    }, [token, user]);
+    }, [user]);
 
     const value = useMemo(() => ({
         user,
         setUser,
-        token,
-        setToken,
-        role,
-        setRole,
-        isLoading,
-        setIsLoading,
-        errorRegister,
-        setErrorRegister,
-        successRegister,
-        setSuccessRegister,
-    }), [user, token, role, isLoading, errorRegister, successRegister]);
+    }), [user, setUser]);
+    
     return (
         <FilterContextState.Provider value={value}>
             {children}

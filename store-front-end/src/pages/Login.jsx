@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import Header from "../components/HeaderLoginRegister";
 import Loading from "../components/Loading";
 import { FilterContextState } from "../context/InfoContext";
 import useDataInfos from "../hooks/useDataInfos";
@@ -8,7 +9,7 @@ import "../styles/Login.css";
 function Login() {
   const history = useHistory();
 
-  const { role } = useContext(FilterContextState) || {};
+  const { user } = useContext(FilterContextState) || {};
 
   const { loginUser, errorLogin, setErrorLogin } =
     useDataInfos() || {};
@@ -18,19 +19,19 @@ function Login() {
   const [messageLogin, setMessageLogin] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  const EMAIL_LIMIT = 5;
-  const userNameValidation = email.length > EMAIL_LIMIT; 
+  const EMAIL_REGEX = /\S+@\S+\.\S+/;
+  const emailValidation = EMAIL_REGEX.test(email); 
   const PASSWORD_LIMIT = 5;
   const passwordValidation = password.length > PASSWORD_LIMIT;
 
   const saveSubmition = () => {
     loginUser(email, password);
   };
-
+  
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 2000);
 
     if (errorLogin === "Email ou senha inválidos") {
       setErrorLogin("Usuário não encontrado no banco de dados");
@@ -40,22 +41,22 @@ function Login() {
       }, 3000);
     }
 
-    if (role === "ADMIN") {
+    if (user.role === "ADMIN") {
       history.push("/home_admin");
-    } else if (role === "USER") {
+    } else if (user.role === "USER") {
       history.push("/home_user");
+    } else if (!user.role) {
+      setMessageLogin("Preencha os campos corretamente!");
     }
-    if (role === "") {
-      setMessageLogin("Preencha todos os campos!");
-    }
-  }, [role, history, errorLogin, setErrorLogin, setMessageLogin]);
+  }, [history, errorLogin, setErrorLogin, user.role]);
 
   if (isLoading) return <Loading />;
 
   return (
+    <>
+      <Header />
     <div className="login-form">
-      <img className="recipes_logo" alt="Logo" />
-      <img alt="tomate" className="login_image" />
+      <img alt="tomate" className="login_image" src="http://localhost:3000/logo-store.jpg" />
       <div className="formLogin">
         <h1>Login</h1>
         <input
@@ -74,7 +75,7 @@ function Login() {
           className="login_button"
           type="button"
           data-testid="login-submit-btn"
-          disabled={!(userNameValidation && passwordValidation)}
+          disabled={!(emailValidation && passwordValidation)}
           onClick={saveSubmition}
         >
           Entrar
@@ -89,6 +90,7 @@ function Login() {
         <span className="span-message">{messageLogin}</span>
       )}
     </div>
+    </>
   );
 }
 

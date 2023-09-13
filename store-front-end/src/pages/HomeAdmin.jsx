@@ -1,29 +1,30 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ErrorPageNotAcess from "../components/ErrorPageNotAcess";
+import HeaderAdminUser from "../components/HeaderAdminUser";
 import Loading from "../components/Loading";
 import RegisterNewUser from "../components/RegisterNewUser";
+import { FilterContextState } from "../context/InfoContext";
 
 export default function HomeAdmin() {
-  const storageUser = localStorage.getItem("user");
-  const user = JSON.parse(storageUser);
-  const role = user.role;
-
   const [loading, setLoading] = useState(true);
-
+  
+  const { user, setUser } = useContext(FilterContextState) || {};
+  
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 2000);
   }, []);
 
   return (
     <>
       {loading && <Loading />}
-      {role === "ADMIN" ? (
+      {user.role === "ADMIN" ? (
+        <>
+          <HeaderAdminUser user={ user } setUser={ setUser } />
         <div className="page-admin">
-          <p>Estou na página Home do adminstrador</p>
           <RegisterNewUser />
-      </div>) : ( <ErrorPageNotAcess /> )
+        </div> </>) : ( <ErrorPageNotAcess /> )
       }
     </>
   )

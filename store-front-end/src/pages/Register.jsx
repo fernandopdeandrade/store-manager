@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/HeaderLoginRegister";
 import Loading from "../components/Loading";
 import useDataInfos from "../hooks/useDataInfos";
 import "../styles/Register.css";
 
-export default function RegisterNewUser() {
+export default function Register() {
   const { createUser, responseRegister } = useDataInfos() || {};
 
   const [name, setName] = useState("");
@@ -12,7 +13,6 @@ export default function RegisterNewUser() {
   const [email, setEmail] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
   const [messageLogin, setMessageLogin] = useState("");
   const [classMessage, setClassMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -27,8 +27,6 @@ export default function RegisterNewUser() {
   const birthDateValidation = BIRTHDATE_REGEX.test(birthDate);
   const PASSWORD_LIMIT = 5;
   const passwordValidation = password.length > PASSWORD_LIMIT;
-  const ROLE_LIMIT = 0;
-  const roleValidation = role.length > ROLE_LIMIT;
 
   useEffect(() => {
     setTimeout(() => {
@@ -56,14 +54,12 @@ export default function RegisterNewUser() {
     setEmail("");
     setBirthDate("");
     setPassword("");
-    setRole("");
 
     document.getElementById("user-name-input").value = "";
     document.getElementById("user-cpf-input").value = "";
     document.getElementById("user-email-input").value = "";
     document.getElementById("user-birthDate-input").value = "";
     document.getElementById("password-input").value = "";
-    document.getElementById("role-input").value = "";
   };
 
   const registerUser = async () => {
@@ -75,7 +71,7 @@ export default function RegisterNewUser() {
       id_product: "",
       active: true,
       password: password,
-      role: role,
+      role: "USER",
     };
     
     const options = {
@@ -90,8 +86,9 @@ export default function RegisterNewUser() {
   return (
     <>
       {isLoading && <Loading />}
+      <Header />
       <div className="login-form">
-      <img className="recipes_logo" alt="Logo" src="http://localhost:3000/logo-store.jpg" /><br />
+      <img className="logo-store" alt="Logo" src="http://localhost:3000/logo-store.jpg" /><br/>
       <div className="formRegister">
         <h1>Cadastro</h1>
         {<b className={!nameValidation ? 'b-error-register' : 'b-succes-register'}>Nome deve ter 3 ou mais caracteres</b>}<br/> 
@@ -129,15 +126,6 @@ export default function RegisterNewUser() {
           placeholder="Password..."
           onChange={(event) => setPassword(event.target.value)}
           />
-          {<b className={!roleValidation ? 'b-error-register' : 'b-succes-register'}>*Campo obrigatório!</b>}<br />
-          <select
-            id="role-input"
-            onChange={(event) => setRole(event.target.value)}
-          >
-            <option value="">Selecione uma opção</option>
-            <option value="USER">USER</option>
-            <option value="ADMIN">ADMIN</option>
-          </select>
         <button
           className="login_button"
           type="button"

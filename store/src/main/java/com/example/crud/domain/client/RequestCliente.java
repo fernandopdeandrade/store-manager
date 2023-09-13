@@ -6,9 +6,7 @@ import jakarta.validation.constraints.NotNull;
 public record RequestCliente(
   String id,
 
-  @NotNull
   String name,
-  @NotNull
   String cpf,
   
   @Email

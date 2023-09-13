@@ -1,4 +1,5 @@
 import { Audio } from 'react-loader-spinner';
+import '../styles/Loading.css';
 
 export default function Loading() {
   return (
@@ -12,6 +13,7 @@ export default function Loading() {
         wrapperStyle
         wrapperClass
       />
+      <p>Loading...</p>
     </div>
   );
 }
