@@ -1,5 +1,6 @@
 package com.example.crud.domain.sold;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,11 +22,15 @@ import lombok.Setter;
 public class Sold {
   @Id @GeneratedValue(strategy = GenerationType.UUID)
   private String id;
-  private String id_product;
-  private String id_client;
 
-  public Sold(RequestSold requestSold){
-    this.id_product = requestSold.id_product();
-    this.id_client = requestSold.id_client();
+  @Column(name="id_product")
+  private String idProduct;
+
+  @Column(name="id_client")
+  private String idClient;
+
+  public Sold(RequestSold requestSold) {
+    this.idProduct = requestSold.idProduct();
+    this.idClient = requestSold.idClient();
   }
 }

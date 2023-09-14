@@ -17,7 +17,7 @@ export default function HeaderAdminUser(props) {
       <p>Seja bem vindo(a) { user.name }</p>
       <div className="header-links">
         {id && <Link to={ "/home_user" }>Loja</Link>}
-        <Link to="/admin/products">Pedidos</Link>
+        <Link to="/home_user_purchased">Pedidos</Link>
         <Link to="/" onClick={ logout }>Sair</Link>
       </div>
     </header>
