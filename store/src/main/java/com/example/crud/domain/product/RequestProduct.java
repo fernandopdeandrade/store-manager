@@ -9,6 +9,9 @@ public record RequestProduct(
         @NotBlank
         String name,
         @NotNull
-        Integer price_in_cents
+        Integer price_in_cents,
+
+        String link_image,
+        String descricao_product
 ) {
 }

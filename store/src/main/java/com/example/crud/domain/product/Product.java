@@ -24,10 +24,14 @@ public class Product {
     private String name;
     private Integer price_in_cents;
     private Boolean active;
+    private String link_image;
+    private String descricao_product;
 
     public Product(RequestProduct requestProduct){
         this.name = requestProduct.name();
         this.price_in_cents = requestProduct.price_in_cents();
         this.active = true;
+        this.link_image = requestProduct.link_image();
+        this.descricao_product = requestProduct.descricao_product();
     }
 }

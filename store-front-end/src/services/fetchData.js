@@ -16,6 +16,12 @@ const fetchGetAllProducts = async (url) => {
   return data;
 }
 
+const fetchGetProductId = async (url) => {
+  const response = await fetch(url);
+  const data = response.json();
+  return data;
+}
+
 const fetchGetAllClients = async (url) => {
   const response = await fetch(url);
   const data = await response.json()
@@ -25,7 +31,6 @@ const fetchGetAllClients = async (url) => {
 export {
   fetchCreateUser,
   fetchGetAllClients,
-  fetchGetAllProducts,
-  fetchLoginUser
+  fetchGetAllProducts, fetchGetProductId, fetchLoginUser
 };
 

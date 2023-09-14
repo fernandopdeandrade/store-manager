@@ -77,6 +77,8 @@ public class ProductController {
             Product product = optionalProduct.get();
             product.setName(data.name());
             product.setPrice_in_cents(data.price_in_cents());
+            product.setLink_image(data.link_image());
+            product.setDescricao_product(data.descricao_product());
             return ResponseEntity.ok(product);
         } else {
             throw new EntityNotFoundException();

@@ -5,6 +5,8 @@ const FilterContextState = createContext();
 
 function FilterProvider({ children }) {
     const [user, setUser] = useState(localStorage.getItem('user') || []);
+    const [products, setProducts] = useState([]);
+    const [idProduct, setIdProduct] = useState('');
 
     useEffect(() => {
             if (user.length !== 0) {
@@ -15,7 +17,11 @@ function FilterProvider({ children }) {
     const value = useMemo(() => ({
         user,
         setUser,
-    }), [user, setUser]);
+        products,
+        setProducts,
+        idProduct,
+        setIdProduct,
+    }), [user, setUser, products, setProducts, idProduct, setIdProduct]);
     
     return (
         <FilterContextState.Provider value={value}>
