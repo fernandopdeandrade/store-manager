@@ -7,6 +7,7 @@ function FilterProvider({ children }) {
     const [user, setUser] = useState(localStorage.getItem('user') || []);
     const [products, setProducts] = useState([]);
     const [idProduct, setIdProduct] = useState('');
+    const [solds, setSolds] = useState([]);
 
     useEffect(() => {
             if (user.length !== 0) {
@@ -21,7 +22,17 @@ function FilterProvider({ children }) {
         setProducts,
         idProduct,
         setIdProduct,
-    }), [user, setUser, products, setProducts, idProduct, setIdProduct]);
+        solds,
+        setSolds,
+    }), [user,
+        setUser,
+        products,
+        setProducts,
+        idProduct,
+        setIdProduct,
+        solds,
+        setSolds
+    ]);
     
     return (
         <FilterContextState.Provider value={value}>

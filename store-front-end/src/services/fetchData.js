@@ -28,9 +28,18 @@ const fetchGetAllClients = async (url) => {
   return data;
 }
 
+const fetchGetAllSoldsByClientId = async (url) => {
+  const response = await fetch(url);
+  const data = await response.json()
+  return data;
+}
+
 export {
   fetchCreateUser,
   fetchGetAllClients,
-  fetchGetAllProducts, fetchGetProductId, fetchLoginUser
+  fetchGetAllProducts,
+  fetchGetAllSoldsByClientId,
+  fetchGetProductId,
+  fetchLoginUser
 };
 

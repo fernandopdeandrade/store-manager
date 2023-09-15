@@ -15,7 +15,7 @@ export default function Routes() {
       <Route path="/home_admin" component={HomeAdmin} />
       <Route path="/register" component={Register} />
       <Route path="/product/:id" component={ProductIdDetails} />
-      <Route path="/home_user_purchased" component={HomeUserPurchased} />
+      <Route path="/home_user_purchased/:id" component={HomeUserPurchased} />
     </Switch>
   );
 }

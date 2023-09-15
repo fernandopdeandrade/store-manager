@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 import { FilterContextState } from '../context/InfoContext';
-import { fetchCreateUser, fetchGetAllClients, fetchGetAllProducts, fetchGetProductId, fetchLoginUser } from '../services/fetchData';
+import { fetchCreateUser, fetchGetAllClients, fetchGetAllProducts, fetchGetAllSoldsByClientId, fetchGetProductId, fetchLoginUser } from '../services/fetchData';
 
 export default function useDataInfos() {
-  const { setUser, setProducts } = useContext(FilterContextState);
+  const { setUser, setProducts, setSolds } = useContext(FilterContextState);
   const [errorLogin, setErrorLogin] = useState('');
   const [responseRegister, setResponseRegister] = useState('');
 
@@ -24,7 +24,6 @@ export default function useDataInfos() {
       };
 
       const resultData = await fetchLoginUser(url, Option);
-      console.log("sou o resultData do useDataInfos", resultData);
 
       if (resultData.password === password) {
         setUser(resultData);
@@ -50,7 +49,6 @@ export default function useDataInfos() {
     const url = 'http://localhost:8080/product';
     const resultData = await fetchGetAllProducts(url);
     setProducts(resultData);
-    console.log("sou o resultData do useDataInfos", resultData);
     };
   
     const getProductId = async (id) => {
@@ -58,6 +56,12 @@ export default function useDataInfos() {
       const resultData = await fetchGetProductId(url);
       console.log("sou o resultData do getProductId do useDataInfos", resultData);
       return resultData;
+    }
+  
+    const getAllSoldsByClientId = async (id) => {
+      const url = `http://localhost:8080/sold/${id}`;
+      const resultData = await fetchGetAllSoldsByClientId(url);
+      setSolds(resultData);
     }
   
   return {
@@ -70,5 +74,6 @@ export default function useDataInfos() {
     responseRegister,
     setResponseRegister,
     getProductId,
+    getAllSoldsByClientId,
   };
 }
