@@ -12,8 +12,8 @@ function FilterProvider({ children }) {
     useEffect(() => {
             if (user.length !== 0) {
                 localStorage.setItem('user', JSON.stringify(user));
-            } 
-    }, [user]);
+            }
+    }, [user, solds]);
 
     const value = useMemo(() => ({
         user,
@@ -24,7 +24,8 @@ function FilterProvider({ children }) {
         setIdProduct,
         solds,
         setSolds,
-    }), [user,
+    }), [
+        user,
         setUser,
         products,
         setProducts,

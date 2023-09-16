@@ -4,7 +4,14 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+}
+
+.title-purchased {
+  color: gray;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 20px;
+  text-shadow: 2px 2px 2px black;
 }
 
 .home-user-purchased  .message-product {
@@ -12,7 +19,7 @@
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
-  text-shadow: 3px 3px 3px black;
+  text-shadow: 1px 1px 1px black;
 }
 
 .item-product {
@@ -21,18 +28,19 @@
   align-items: center;
   justify-content: center;
   margin-top: 100px;
-  margin: 50px;
-  min-width: 300px;
-  min-height: 300px;
+  margin: 20px;
+  padding: 10px;
+  width: 400px;
+  height: 350px;
   box-shadow: 3px 3px 3px 3px rgba(128, 128, 128, 0.356);
 }
 
 .name-product {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   margin-bottom: 20px;
   color: gray;
-  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  text-shadow: 1px 1px 1px black;
 }
 
 .item-product img {
@@ -42,4 +50,85 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.item-product .price-product {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: left;
+  width: 100%;
+  color: rgb(9, 112, 112);
+}
+
+.item-product .description-product {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%;
+  color: rgb(9, 112, 112);
+}
+
+.item-product .bottons-product-purchased {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.item-product .bottons-product-purchased .btn-to-give-up {
+  height: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: red;
+  text-shadow: 1px 1px 1px black
+}
+
+.item-product .bottons-product-purchased .btn-to-give-up:hover {
+  color: rgb(192, 9, 9);
+}
+
+.item-product .bottons-product-purchased .btn-to-give-up:active {
+  scale: 0.95;
+}
+
+.item-product .bottons-product-purchased .btn-go-to-the-store {
+  height: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgb(9, 112, 112);
+  text-shadow: 1px 1px 1px black
+}
+
+.item-product .bottons-product-purchased .btn-go-to-the-store:hover {
+  color: rgb(9, 112, 112);
+}
+
+.item-product .bottons-product-purchased .btn-go-to-the-store:active {
+  scale: 0.95;
+}
+
+.item-product .bottons-product-purchased .btn-to-see-more {
+  height: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgb(112, 79, 9);
+  text-shadow: 1px 1px 1px black
+}
+
+.item-product .bottons-product-purchased .btn-to-see-more:hover {
+  color: rgb(112, 79, 9);
+}
+
+.item-product .bottons-product-purchased .btn-to-see-more:active {
+  scale: 0.95;
 }

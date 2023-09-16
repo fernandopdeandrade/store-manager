@@ -61,8 +61,18 @@ export default function useDataInfos() {
     const getAllSoldsByClientId = async (id) => {
       const url = `http://localhost:8080/sold/${id}`;
       const resultData = await fetchGetAllSoldsByClientId(url);
+      console.log("sou o resultData do getAllSoldsByClientId do useDataInfos", resultData);
       setSolds(resultData);
     }
+  
+  const deleteSold = async (id) => {
+    const url = `http://localhost:8080/sold/${id}`;
+    const options = {
+      method: 'DELETE',
+    };
+    const resultData = await fetch(url, options);
+    console.log("sou o resultData do deleteSold do useDataInfos", resultData);
+  }
   
   return {
     errorLogin,
@@ -75,5 +85,6 @@ export default function useDataInfos() {
     setResponseRegister,
     getProductId,
     getAllSoldsByClientId,
+    deleteSold,
   };
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,6 +69,19 @@ public class SoldController {
       }
       
       return ResponseEntity.ok(solds);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().build();
+    }
+  }
+
+  /**
+   * Delete sold by id
+   */
+  @DeleteMapping("/{id}")
+  public ResponseEntity<String> deleteSoldById(@PathVariable String id) {
+    try {
+      repository.deleteById(id);
+      return ResponseEntity.ok("Sold deleted");
     } catch (Exception e) {
       return ResponseEntity.badRequest().build();
     }

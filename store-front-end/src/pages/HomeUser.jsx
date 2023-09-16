@@ -28,7 +28,6 @@ export default function HomeUser() {
       {user.role === "USER" ? (
         <>
         <HeaderAdminUser user={ user } setUser={ setUser } />
-        <div className="page-user">
             <div className="container-products">
               {products.map((product) => (
                 <div className="product" key={ product.id }>
@@ -36,12 +35,12 @@ export default function HomeUser() {
                   <p className="title">{product.name.length > 20 ? `${product.name.slice(0, 20)}...` : `${product.name}`}</p>
                   <p className="price"><b>Preço: </b>{product.price_in_cents / 100}.00 <b>R$</b></p>
                   <Link
+                    className="link-details"
                     to={ `/product/${product.id}` }
                   >Ver detalhes do produto
                   </Link>
                 </div>
               ))}
-            </div>
         </div> </>) : ( <ErrorPageNotAcess /> )
       }
     </>
